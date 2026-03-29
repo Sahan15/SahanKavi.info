@@ -12,12 +12,14 @@ gsap.ticker.add((time) => { lenis.raf(time * 1000) });
 gsap.ticker.lagSmoothing(0, 0);
 
 // ===================================================================
-// 2. CUSTOM CURSOR ANIMATION (Ultra Smooth)
+// 2. CUSTOM CURSOR ANIMATION (Desktop Only)
 // ===================================================================
 const cursor = document.getElementById('cursor');
 const cursorDot = document.getElementById('cursor-dot');
 
-if(cursor && cursorDot) {
+// 🚨 Screen එක 768px ට වඩා ලොකු නම් (Desktop) විතරක් Cursor එක වැඩ කරන්න හදලා තියෙන්නේ
+if(cursor && cursorDot && window.innerWidth > 768) {
+  
   // Cursor Movement
   window.addEventListener('mousemove', (e) => {
     gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power2.out" });
@@ -35,7 +37,6 @@ if(cursor && cursorDot) {
     });
   });
 }
-
 // ===================================================================
 // 3. NAVBAR LOGIC (Fixed GSAP Centering & Auto Hide)
 // ===================================================================

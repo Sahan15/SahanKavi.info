@@ -45,15 +45,8 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html, body { 
-      background-color: var(--bg); 
-      color: var(--text-primary); 
-      font-family: 'Inter', sans-serif; 
-      overflow-x: hidden; /* 🚨 තිරයෙන් එළියට පනින එක නවත්වනවා */
-      width: 100%; 
-      cursor: none !important; 
-      transition: background-color 0.4s ease, color 0.4s ease; 
-    }
+    html { overscroll-behavior: none; }
+    body { background-color: var(--bg); color: var(--text-primary); font-family: 'Inter', sans-serif; overflow-x: clip; width: 100%; cursor: none !important; transition: background-color 0.4s ease, color 0.4s ease; }
     
     a, button { cursor: none !important; text-decoration: none; color: inherit; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
@@ -79,10 +72,12 @@
     .nav-compact { padding: 5px 14px 5px 6px; gap: 12px; opacity: 0; pointer-events: none; }
     .nav-avatar { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; }
     .nav-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .nav-links a { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-primary); padding: 8px 18px; border-radius: 100px; transition: 0.3s; }
+    
+    /* 🚨 TEXT BREAKING FIX: white-space: nowrap දැම්මා 🚨 */
+    .nav-links a { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-primary); padding: 8px 18px; border-radius: 100px; transition: 0.3s; white-space: nowrap; }
     .nav-links a:hover { background: var(--nav-hover-bg); }
     .nav-links a.active { background: var(--nav-active-bg); }
-    .nav-status { font-size: 12.5px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+    .nav-status { font-size: 12.5px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; white-space: nowrap; }
     .status-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
     /* ===================================================================
@@ -98,7 +93,7 @@
     .filter-btn:hover, .filter-btn.active { background: var(--accent); color: #000 !important; border-color: var(--accent); }
 
     /* ===================================================================
-       5. BLOG GRID (Now with 6 Posts & Fixed Scroll)
+       5. BLOG GRID
        =================================================================== */
     .blog-grid-section { padding-bottom: 100px; position: relative; z-index: 2; width: 100%; }
     .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; width: 100%; }
@@ -147,7 +142,7 @@
     .creator-badge span { color: #FF8A00 !important; }
 
     /* ===================================================================
-       7. MOBILE FIXES (Scroll Fix included)
+       7. MOBILE FIXES (NavBar & Theme Toggle Alignment)
        =================================================================== */
     @media (max-width: 900px) {
       .blog-grid { grid-template-columns: 1fr !important; gap: 60px; }
@@ -162,17 +157,30 @@
       html, body, a, button { cursor: auto !important; }
       .container { padding: 0 20px; }
       
-      .fixed-theme-toggle { top: 85px !important; right: 20px !important; transform: scale(0.9); }
-      .nav-full { padding: 5px 14px; width: auto; justify-content: space-between; }
-      .nav-links a { font-size: 13px; padding: 8px 16px; }
+      /* 🚨 1. NAVBAR ALIGNED TO LEFT 🚨 */
+      .nav-full, .nav-compact { 
+        left: 15px !important; 
+        transform: none !important; 
+        width: auto !important;
+      }
       
+      /* 🚨 2. BUTTON TEXT SIZED DOWN & NO WRAPPING 🚨 */
+      .nav-links a { 
+        font-size: 12px !important; 
+        padding: 6px 12px !important; 
+      }
+      
+      /* 🚨 3. THEME TOGGLE ALIGNED INLINE WITH NAVBAR 🚨 */
+      .fixed-theme-toggle { 
+        top: 29px !important; /* Navbar එකේ හරි මැදට එන්න ගාන හැදුවා */
+        right: 15px !important; 
+        transform: scale(0.85); /* පොඩ්ඩක් සයිස් අඩු කළා */
+      }
+
       .blog-hero { padding-top: 140px; padding-bottom: 50px; }
       .blog-main-title { font-size: 36px !important; line-height: 1.1; }
-      
       .blog-img-wrap { height: 220px; width: 100%; }
       .blog-title { font-size: 20px; }
-      
-      /* 🚨 Scroll Issue Fixed: Removed 'overflow: hidden' from .blog-grid here */
     }
   </style>
 </head>
@@ -307,18 +315,15 @@
 
   <footer class="footer-neon">
     <div class="container">
-      
       <div class="footer-top-grid">
         <div class="footer-block">
           <span class="footer-label">Email :</span>
           <a href="mailto:sahankavishka@example.com" class="footer-link">sahankavishka@example.com</a>
         </div>
-        
         <div class="footer-block">
           <span class="footer-label">Call Today :</span>
           <a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a>
         </div>
-        
         <div class="footer-block">
           <span class="footer-label">Social :</span>
           <div class="footer-social-icons">
@@ -335,9 +340,7 @@
           </div>
         </div>
       </div>
-
       <div class="footer-divider"></div>
-
       <div class="footer-bottom-flex">
         <p class="footer-copy">© Copyright 2026. All Rights Reserved by <a href="#">Sahan Kavishka</a></p>
         <div class="footer-creator">
@@ -346,7 +349,6 @@
           <a href="#">Sahan Kavishka</a>
         </div>
       </div>
-
     </div>
   </footer>
 
@@ -397,6 +399,12 @@
     const navCompact = document.getElementById('nav-compact');
     gsap.set([navFull, navCompact], { xPercent: -50, left: "50%" });
     gsap.set(navCompact, { y: -100, autoAlpha: 0 });
+    
+    // Mobile වලදී centering අයින් කරන නිසා xPercent 0 කරනවා
+    if(window.innerWidth <= 768) {
+      gsap.set([navFull, navCompact], { xPercent: 0, left: "15px" });
+    }
+
     gsap.fromTo(navFull, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.5, ease: 'expo.out', delay: 0.2 });
 
     ScrollTrigger.create({

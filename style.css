@@ -614,3 +614,15 @@ body.light-mode .text-outline {
     width: 100% !important; height: 100% !important; object-fit: cover !important; border-radius: 20px !important;
   }
 }
+/* ===================================================================
+   🚨 MOBILE CURSOR FIX (Hides Custom Cursor on Phones) 🚨
+   =================================================================== */
+@media (max-width: 768px) {
+  #cursor, #cursor-dot {
+    display: none !important; /* රවුම් දෙකම හංගනවා */
+  }
+  
+  *, html, body, a, button, input, textarea, select {
+    cursor: auto !important; /* බලහත්කාරයෙන් දාලා තිබ්බ "cursor: none" එක අයින් කරනවා */
+  }
+}
