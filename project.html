@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects | Duncan Robert</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body class="projects-page">
+  <div id="cursor"></div>
+  <div id="cursor-dot"></div>
+
+  <section class="work-hero">
+    <div class="container">
+      <h1 class="work-title">EXPLORE <span class="text-outline">WORK</span></h1>
+      <p class="work-sub">A curated selection of digital experiences, business solutions, and visual identities.</p>
+      
+      <div class="work-filters">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="business">Business Solutions</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-grid-section">
+    <div class="container">
+      <div class="work-grid">
+        
+        <div class="work-card" data-category="ui-ux">
+          <div class="work-img-wrap">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" alt="Work 1">
+            <div class="work-overlay">
+              <span>View Case Study</span>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-meta"><span>2024</span><span class="dot"></span><span>UI/UX</span></div>
+            <h3 class="work-item-title">Fintech Dashboard</h3>
+            <p class="work-summary">A complete banking experience focused on accessibility and data visualization.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="web">
+          <div class="work-img-wrap">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Work 2">
+            <div class="work-overlay">
+              <span>Visit Site</span>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-meta"><span>2023</span><span class="dot"></span><span>Web Dev</span></div>
+            <h3 class="work-item-title">Nexus E-Commerce</h3>
+            <p class="work-summary">High-performance headless commerce built for speed and conversion.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="business">
+          <div class="work-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Work 3">
+            <div class="work-overlay">
+              <span>Details</span>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-meta"><span>2024</span><span class="dot"></span><span>Strategy</span></div>
+            <h3 class="work-item-title">Corporate ERP System</h3>
+            <p class="work-summary">Streamlining business workflows with custom data management tools.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="web">
+          <div class="work-img-wrap">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="Work 4">
+            <div class="work-overlay">
+              <span>Live Preview</span>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-meta"><span>2023</span><span class="dot"></span><span>Web Dev</span></div>
+            <h3 class="work-item-title">Portfolio CMS</h3>
+            <p class="work-summary">Custom Framer components and CMS structure for creative directors.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
