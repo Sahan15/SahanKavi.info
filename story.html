@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Story | Sahan Kavishka</title>
+  <link rel="icon" type="image/png" href="/SahanKavi.info/favicon-png-favicon-1024.png">
+<link rel="apple-touch-icon" href="/SahanKavi.info/favicon-png-favicon-1024.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+
+  <style>
+    /* ===================================================================
+       1. VARIABLES & BASE STYLES
+       =================================================================== */
+    :root {
+      --bg: #111111;
+      --bg-secondary: #1A1A1A;
+      --text-primary: #FFFFFF;
+      --text-secondary: #A0A0A0;
+      --accent: #CCFF00;
+      --border: #2A2A2A;
+      --nav-bg: rgba(10, 10, 10, 0.8);
+      --radius-full: 999px;
+    }
+
+    body.light-mode {
+      --bg: #FFFFFF;
+      --bg-secondary: #F5F5F5;
+      --text-primary: #111111;
+      --text-secondary: #555555;
+      --accent: #88BB00;
+      --border: #E0E0E0;
+      --nav-bg: rgba(255, 255, 255, 0.8);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { overscroll-behavior: none; }
+
+    /* 🚨 SCROLL BUG FIX: body එකේ overflow අයින් කළා 🚨 */
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      cursor: none !important;
+      transition: background-color 0.4s ease;
+    }
+
+    /* 🚨 අලුත් WRAPPER එක (ඩිසයින් එළියට පනින එක මේකෙන් නවත්වනවා) 🚨 */
+    .page-wrapper {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    a, button { cursor: none !important; text-decoration: none; color: inherit; }
+    h1, h2, h3, p, span, div { transition: color 0.4s ease; }
+    h1, h2, h3 { text-transform: uppercase; font-family: 'Archivo Black', sans-serif; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; width: 100%; }
+
+    /* Background Noise */
+    .page-wrapper::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1;
+    }
+
+    /* ===================================================================
+       2. CURSOR & THEME TOGGLE
+       =================================================================== */
+    #cursor { position: fixed; width: 35px; height: 35px; border: 1.5px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 999999; transform: translate(-50%, -50%); transition: width 0.3s, border-color 0.4s; }
+    #cursor-dot { position: fixed; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 1000000; transform: translate(-50%, -50%); }
+
+    .fixed-theme-toggle { position: fixed; top: 25px; right: 40px; z-index: 9999; }
+    .toggle-track { width: 46px; height: 24px; background-color: var(--accent); border-radius: var(--radius-full); position: relative; }
+    .toggle-thumb { width: 18px; height: 18px; background-color: #000; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: transform 0.3s; }
+    body.light-mode .toggle-thumb { transform: translateX(22px); background: white; }
+
+    /* ===================================================================
+       3. NAVBAR
+       =================================================================== */
+    .nav-full {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background: var(--nav-bg); backdrop-filter: blur(20px); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 6px; display: flex; align-items: center; z-index: 9999; gap: 12px;
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+    .nav-avatar { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; }
+    .nav-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .nav-links a { font-size: 13px; font-weight: 600; color: var(--text-primary); padding: 8px 18px; border-radius: 100px; background: rgba(255, 255, 255, 0.1); transition: background-color 0.3s; }
+    body.light-mode .nav-links a { background: rgba(0, 0, 0, 0.05); }
+
+    /* ===================================================================
+       4. STORY CONTENT
+       =================================================================== */
+    .story-hero { padding: 180px 0 60px; text-align: center; }
+    .story-title { font-size: clamp(40px, 8vw, 90px); line-height: 0.9; margin-bottom: 20px; color: var(--text-primary); }
+    .text-outline { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.3); color: transparent !important; transition: 0.4s; }
+    body.light-mode .text-outline { -webkit-text-stroke: 2px rgba(0, 0, 0, 0.8); }
+
+    .story-intro { font-size: 20px; color: var(--text-secondary); max-width: 700px; margin: 0 auto 80px; text-align: center; line-height: 1.6; }
+
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 30px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: var(--border); transition: background-color 0.4s ease; }
+
+    .timeline-item { position: relative; margin-bottom: 60px; opacity: 0; transform: translateY(30px); }
+    .timeline-dot { position: absolute; left: -34px; top: 5px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+    .timeline-year { font-family: 'Oswald', sans-serif; font-size: 18px; color: var(--accent); margin-bottom: 10px; display: block; }
+    .timeline-title { font-size: 24px; margin-bottom: 12px; color: var(--text-primary); }
+    .timeline-desc { color: var(--text-secondary); line-height: 1.7; font-size: 16px; }
+
+    /* ===================================================================
+       5. FOOTER
+       =================================================================== */
+    .footer-neon { background-color: var(--accent); color: #111 !important; padding: 80px 0 40px; margin-top: 100px; position: relative; z-index: 2; display: block; }
+    .footer-neon p, .footer-neon span { color: #111 !important; }
+    .footer-top-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 50px; }
+    .footer-label { font-size: 14px; color: rgba(0, 0, 0, 0.6) !important; font-weight: 500; }
+    .footer-link { font-size: 20px; font-weight: 600; color: #000 !important; }
+    .footer-social-icons { display: flex; gap: 20px; margin-top: 10px; }
+    .footer-social-icons a { color: #000 !important; transition: transform 0.3s; }
+    .footer-social-icons a:hover { transform: translateY(-5px); }
+    .footer-divider { width: 100%; height: 1px; background: rgba(0, 0, 0, 0.1); margin-bottom: 30px; }
+    .footer-bottom-flex { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 500; }
+
+    @media (max-width: 768px) {
+      #cursor, #cursor-dot { display: none !important; }
+      html, body { cursor: auto !important; }
+      .container { padding: 0 24px; }
+      .story-hero { padding-top: 130px; }
+      .footer-top-grid { grid-template-columns: 1fr; }
+      .footer-bottom-flex { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .fixed-theme-toggle { top: 85px; right: 20px; transform: scale(0.9); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <div class="fixed-theme-toggle">
+      <div class="toggle-track" id="themeToggle"> 
+        <div class="toggle-thumb"></div>
+      </div>
+    </div>
+
+    <nav class="nav-full">
+      <div class="nav-avatar"><img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100" alt="Avatar"></div>
+      <div class="nav-links"><a href="index.html">← Back to Home</a></div>
+    </nav>
+
+    <section class="story-hero">
+      <div class="container">
+        <h1 class="story-title">THE STORY <br><span class="text-outline">BEHIND THE CODE</span></h1>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="story-intro">I'm Sahan Kavishka, a developer driven by the harmony between design and functionality. Here is a glimpse into how I started and where I am today.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-year">2020 - THE BEGINNING</span>
+          <h3 class="timeline-title">Discovery of Digital Art</h3>
+          <p class="timeline-desc">Started my journey as a graphic designer, learning the fundamentals of visual communication and color theory.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-year">2022 - CODING ODYSSEY</span>
+          <h3 class="timeline-title">Transition to Web Development</h3>
+          <p class="timeline-desc">Fell in love with the ability to bring static designs to life. Mastered HTML, CSS, and the magic of JavaScript.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-year">2024 - FULL STACK REACH</span>
+          <h3 class="timeline-title">Building Scalable Solutions</h3>
+          <p class="timeline-desc">Expanded into backend technologies and strategic business ICT services to provide complete end-to-end digital solutions.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-year">NOW - 2026</span>
+          <h3 class="timeline-title">Creating Impact</h3>
+          <p class="timeline-desc">Currently working with global clients to scale their brands through premium code and world-class design aesthetics.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-neon">
+      <div class="container">
+        <div class="footer-top-grid">
+          <div class="footer-block">
+            <span class="footer-label">Email :</span>
+            <a href="mailto:sahankavishka@example.com" class="footer-link">sahankavishka@example.com</a>
+          </div>
+          <div class="footer-block">
+            <span class="footer-label">Call Today :</span>
+            <a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a>
+          </div>
+          <div class="footer-block">
+            <span class="footer-label">Social :</span>
+            <div class="footer-social-icons">
+              <a href="#" aria-label="X (Twitter)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="#" aria-label="Behance" style="font-weight: 800; font-size: 18px; font-family: sans-serif; text-decoration: none;">Bē</a>
+              <a href="#" aria-label="Dribbble">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72"></path><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"></path><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom-flex">
+          <p>© Copyright 2026. All Rights Reserved by Sahan Kavishka</p>
+          <p>Created by SK</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <script>
+    // 🚨 1. Scroll Bug Fixed JS 🚨
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+    gsap.ticker.lagSmoothing(0, 0);
+
+    // 2. Custom Cursor
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursor-dot');
+    if(window.innerWidth > 768 && cursor && cursorDot) {
+      window.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.5 });
+        gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+      });
+    }
+
+    // 3. Theme Sync Logic
+    const themeToggle = document.getElementById('themeToggle');
+    let isLightMode = localStorage.getItem('theme') === 'light';
+    if(isLightMode) { document.body.classList.add('light-mode'); }
+
+    themeToggle.addEventListener('click', () => {
+      isLightMode = !isLightMode;
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+    });
+
+    // 4. Content Entrance Animations
+    gsap.from('.story-title', { y: 100, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
+    
+    gsap.utils.toArray('.timeline-item').forEach(item => {
+      gsap.to(item, {
+        scrollTrigger: { trigger: item, start: 'top 85%' },
+        opacity: 1, y: 0, duration: 1, ease: 'power2.out'
+      });
+    });
+  </script>
+</body>
+</html>
