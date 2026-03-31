@@ -345,7 +345,7 @@ body.light-mode .toggle-thumb {
 /* ===================================================================
    08. SERVICES SECTION
    =================================================================== */
-.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
 .services-heading { font-size: clamp(20px, 5vw, 40px); margin-bottom: 10px; }
 .services-sub { max-width: 380px; margin-bottom: 30px; }
 
