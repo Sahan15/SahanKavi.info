@@ -564,7 +564,7 @@ body.light-mode .toggle-thumb {
    15. FINAL LAYOUT & BALANCED GAP FIXES (Desktop & Mobile)
    =================================================================== */
 .pin-spacer { padding-bottom: 0 !important; margin-bottom: 0 !important; }
-.services-grid { align-items: start !important; }
+.services-grid { align-items:center !important; }
 #services { padding-bottom: 20px !important; margin-bottom: 0 !important; }
 #services-dock { margin-top: 0 !important; }
 #about { padding-top: 100px !important; padding-bottom: 100px !important; margin-top: 0 !important; }
