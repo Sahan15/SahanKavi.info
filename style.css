@@ -439,14 +439,32 @@ body.light-mode .toggle-thumb {
 @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; gap: 40px; } .project-img-wrap { aspect-ratio: 16 / 9; } }
 
 /* ===================================================================
-   11. TESTIMONIALS SECTION (Color Fixed for Light Mode)
+   11. TESTIMONIALS SECTION (Color Fixed & Masonry Fixed)
    =================================================================== */
 .testimonials-top { max-width: 600px; margin-bottom: 60px; }
 .testimonials-heading { font-size: clamp(32px, 5vw, 50px); margin-bottom: 15px; }
 
 .testimonials-grid { display: block !important; column-count: 3; column-gap: 24px; }
 
-.testi-card { break-inside: avoid; page-break-inside: avoid; margin-bottom: 24px; height: auto !important; display: flex !important; border-radius: 16px; padding: 32px; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, background-color 0.4s ease; border: 1px solid var(--border); }
+.testi-card { 
+  /* 🚨 Browser වලට හිස්තැන් තියන්න එපා කියලා බල කරන කෝඩ් 🚨 */
+  break-inside: avoid; 
+  page-break-inside: avoid; 
+  -webkit-column-break-inside: avoid; 
+  
+  margin-bottom: 24px; 
+  height: auto !important; 
+  
+  /* 🚨 Flex වෙනුවට Inline-block දැම්මා (මේකෙන් තමයි අවුල හැදෙන්නේ) 🚨 */
+  display: inline-block !important; 
+  width: 100%; 
+  
+  border-radius: 16px; 
+  padding: 32px; 
+  transition: transform 0.3s ease, background-color 0.4s ease; 
+  border: 1px solid var(--border); 
+}
+
 .testi-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
 
 /* 🚨 Fixed Card Colors for Light Mode */
@@ -458,20 +476,21 @@ body.light-mode .toggle-thumb {
 .neon-card p, .neon-card h3, .neon-card h4, .neon-card span { color: #000 !important; }
 
 .stars { color: var(--accent); display: flex; gap: 4px; margin-bottom: 16px; }
-.testi-text { font-size: 15px; margin-bottom: 32px; opacity: 0.9; flex-grow: 1; }
+.testi-text { font-size: 15px; margin-bottom: 32px; opacity: 0.9; }
+
 .testi-author { display: flex; align-items: center; gap: 16px; }
 .testi-author img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
 .author-info h4 { font-size: 15px; font-weight: 600; margin: 0; }
 .author-info span { font-size: 13px; opacity: 0.6; }
 
-.stat-card-box { justify-content: center; gap: 16px; }
-.stat-top-text { font-size: 15px; font-weight: 500; }
-.stat-huge { font-family: 'Oswald', sans-serif; font-size: 64px; line-height: 1; margin: 0; }
+/* 🚨 Stat Cards ටික මැදට වෙන්න හැදුවා (Flex නැති නිසා) */
+.stat-card-box { text-align: center; }
+.stat-top-text { font-size: 15px; font-weight: 500; margin-bottom: 16px; }
+.stat-huge { font-family: 'Oswald', sans-serif; font-size: 64px; line-height: 1; margin: 0 0 16px 0; }
 .stat-bottom-text { font-size: 14px; font-weight: 500; opacity: 0.8; }
 
 @media (max-width: 1024px) { .testimonials-grid { column-count: 2; } }
 @media (max-width: 768px) { .testimonials-grid { column-count: 1; } }
-
 /* ===================================================================
    12. FAQ SECTION
    =================================================================== */
