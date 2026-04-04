@@ -645,3 +645,136 @@ body.light-mode .text-outline {
     cursor: auto !important; /* බලහත්කාරයෙන් දාලා තිබ්බ "cursor: none" එක අයින් කරනවා */
   }
 }
+.article-page {
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+    
+    .article-header-container {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    
+    .article-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    
+    .article-main-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(36px, 6vw, 56px);
+      color: var(--text-primary);
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+    
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .article-meta img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .article-author-info {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .article-author-info strong {
+      font-size: 16px;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .article-author-info span {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .article-hero-img {
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+    
+    .article-hero-img img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* 🚨 Reading Content Styles 🚨 */
+    .article-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px;
+      font-size: 18px; /* Larget text for easy reading */
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    
+    .article-content p {
+      margin-bottom: 24px;
+    }
+    
+    .article-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      color: var(--text-primary);
+      margin: 50px 0 20px;
+    }
+
+    .article-content h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      color: var(--text-primary);
+      margin: 40px 0 15px;
+    }
+    
+    .article-content blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 20px 0 20px 24px;
+      font-size: 22px;
+      font-style: italic;
+      margin: 40px 0;
+      color: var(--text-primary);
+      background: rgba(204, 255, 0, 0.05); /* Very subtle accent background */
+      border-radius: 0 12px 12px 0;
+    }
+    
+    .article-content ul {
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+    
+    .article-content li {
+      margin-bottom: 12px;
+    }
+
+    .article-footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px 20px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+    }
