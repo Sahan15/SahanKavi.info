@@ -14,6 +14,122 @@
 
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===================================================================
+       12. BLOG PAGE STYLES
+       =================================================================== */
+    .all-blogs { padding-bottom: 120px; }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 40px;
+    }
+
+    /* 🚨 Blog Card Base (Colors Fixed for Light & Dark Mode) 🚨 */
+    .blog-card {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border-color: var(--accent);
+    }
+
+    .blog-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .blog-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      opacity: 1 !important; /* Forces image to be fully visible */
+    }
+
+    .blog-card:hover .blog-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .blog-tag {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--accent);
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .blog-info {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    /* 🚨 Text Colors Fixed 🚨 */
+    .blog-meta {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .blog-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      color: var(--text-primary) !important; /* Forced to be visible */
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .blog-desc {
+      font-size: 15px;
+      color: var(--text-secondary) !important;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .read-more {
+      font-size: 13px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body class="light-mode">
 
